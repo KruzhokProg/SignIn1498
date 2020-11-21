@@ -17,17 +17,19 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewHolder
 
     List<Nature> list;
     Context context;
+    public RecyclerViewItemClick rvItemClickInterface;
 
-    public recyclerViewAdapter(List<Nature> list, Context context) {
+    public recyclerViewAdapter(List<Nature> list, Context context, RecyclerViewItemClick rvItemClickInterface) {
         this.list = list;
         this.context = context;
+        this.rvItemClickInterface = rvItemClickInterface;
     }
 
     @NonNull
     @Override
     public recyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_rv, parent, false);
-        return new recyclerViewHolder(view);
+        return new recyclerViewHolder(view, rvItemClickInterface);
     }
 
     @Override
